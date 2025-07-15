@@ -1,0 +1,272 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Portfolio Design System */
+
+@layer base {
+  :root {
+    /* Core Colors - Clean white background for professional resume */
+    --background: 0 0% 100%;
+    --foreground: 222 84% 15%;
+    
+    /* Blue Theme - Professional resume colors */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 213 93% 68%;
+    --primary-dark: 224 76% 48%;
+    
+    /* Layout Colors */
+    --header-bg: 0 0% 100%;
+    --sidebar-bg: 0 0% 100%;
+    --sidebar-border: 220 13% 91%;
+    --card-bg: 0 0% 100%;
+    --card-border: 214 32% 91%;
+    
+    /* Text Colors */
+    --text-primary: 222 84% 15%;
+    --text-secondary: 215 16% 47%;
+    --text-muted: 215 20% 65%;
+    --text-blue: 217 91% 60%;
+    
+    /* Interactive States */
+    --hover-bg: 214 32% 91%;
+    --active-bg: 220 13% 91%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 60%), hsl(213 93% 68%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 13% 95%));
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -2px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -4px hsl(0 0% 0% / 0.1);
+    --shadow-hover: 0 20px 25px -5px hsl(0 0% 0% / 0.15), 0 8px 10px -6px hsl(0 0% 0% / 0.1);
+    --shadow-blue: 0 10px 25px -5px hsl(217 91% 60% / 0.25);
+    
+    /* Animations */
+    --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--text-primary))] font-sans antialiased;
+  }
+}
+
+@layer components {
+  /* Fixed Header */
+  .fixed-header {
+    @apply fixed top-0 left-0 right-0 z-50 bg-[hsl(var(--header-bg))] border-b border-[hsl(var(--card-border))];
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* Interactive Card Component */
+  .portfolio-card {
+    @apply bg-[hsl(var(--card-bg))] border border-[hsl(var(--card-border))] rounded-[var(--radius)] p-6;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition-smooth);
+  }
+  
+  .portfolio-card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-4px);
+    border-color: hsl(var(--primary) / 0.3);
+  }
+  
+  /* Skill Badge */
+  .skill-badge {
+    @apply inline-flex items-center px-4 py-2 rounded-full text-sm font-medium;
+    @apply bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))];
+    transition: var(--transition-smooth);
+  }
+  
+  .skill-badge:hover {
+    @apply bg-[hsl(var(--primary-dark))];
+    transform: scale(1.08) translateY(-2px);
+    box-shadow: var(--shadow-blue);
+  }
+  
+  /* Skill Card */
+  .skill-card {
+    @apply portfolio-card text-center cursor-pointer;
+  }
+  
+  .skill-card:hover .skill-icon {
+    transform: scale(1.1) rotate(5deg);
+  }
+  
+  .skill-icon {
+    transition: var(--transition-bounce);
+  }
+  
+  /* Social Button */
+  .social-btn {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium;
+    @apply text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--primary-foreground))];
+    @apply hover:bg-[hsl(var(--primary))];
+    transition: var(--transition-smooth);
+  }
+  
+  .social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-blue);
+  }
+  
+  /* Header Social Button */
+  .header-social-btn {
+    @apply inline-flex items-center gap-2 p-3 rounded-lg;
+    @apply text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--primary))];
+    @apply hover:bg-[hsl(var(--hover-bg))];
+    transition: var(--transition-fast);
+  }
+  
+  .header-social-btn:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Section Header */
+  .section-header {
+    @apply text-4xl font-bold text-[hsl(var(--text-primary))] mb-2;
+  }
+  
+  .section-title {
+    @apply text-4xl font-bold text-[hsl(var(--text-primary))] mb-2;
+  }
+  
+  .section-subtitle {
+    @apply text-lg text-[hsl(var(--text-secondary))] max-w-2xl mx-auto;
+  }
+  
+  .section-divider {
+    @apply w-16 h-1 bg-[hsl(var(--primary))] rounded-full mb-8;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    @apply pt-24 pb-16 text-center;
+  }
+  
+  .hero-title {
+    @apply text-5xl md:text-6xl font-bold text-[hsl(var(--text-primary))] mb-6;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .hero-subtitle {
+    @apply text-2xl md:text-3xl font-medium text-[hsl(var(--text-blue))] mb-6;
+  }
+  
+  .hero-description {
+    @apply text-lg text-[hsl(var(--text-secondary))] max-w-4xl mx-auto leading-relaxed;
+  }
+  
+  /* Section Spacing */
+  .section {
+    @apply py-16 px-4 max-w-7xl mx-auto;
+  }
+  
+  /* Experience Card */
+  .experience-card {
+    @apply portfolio-card mb-8;
+  }
+  
+  .experience-card:hover .experience-icon {
+    color: hsl(var(--primary));
+    transform: scale(1.1);
+  }
+  
+  .experience-icon {
+    transition: var(--transition-fast);
+  }
+  
+  /* Language Badge */
+  .language-badge {
+    @apply skill-badge bg-[hsl(var(--primary-light))] text-[hsl(var(--text-primary))];
+  }
+  
+  .language-badge:hover {
+    @apply bg-[hsl(var(--primary))] text-[hsl(var(--primary-foreground))];
+  }
+
+  /* Sidebar Styles */
+  .sidebar-header {
+    backdrop-filter: blur(10px);
+    transition: left 0.3s ease;
+  }
+  
+  .sidebar-trigger {
+    @apply p-2 rounded-md text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--hover-bg))];
+    transition: var(--transition-fast);
+  }
+  
+  .sidebar-nav-btn {
+    @apply w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm;
+    @apply text-[hsl(var(--text-secondary))] hover:text-[hsl(var(--primary))] hover:bg-[hsl(var(--hover-bg))];
+    transition: var(--transition-fast);
+  }
+  
+  .sidebar-nav-btn:hover {
+    transform: translateX(4px);
+  }
+  
+  /* Responsive sidebar header */
+  @media (max-width: 768px) {
+    .sidebar-header {
+      left: 0 !important;
+    }
+  }
+}
