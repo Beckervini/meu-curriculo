@@ -4,7 +4,7 @@ Bem-vindo ao meu currículo online! Este projeto foi desenvolvido para apresenta
 
 📸 Demonstração
 
-Acesse o site: https://beckervini.github.io/Curriculo-vb/
+Acesse o site: https://beckervini.github.io/meu-curriculo/
 
 🛠 Funcionalidades
 Apresentação de perfil profissional
